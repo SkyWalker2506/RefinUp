@@ -6,12 +6,13 @@
 ## Executive Summary
 
 - **Genel puan: 1.5/10** (agirlikli ortalama; proje pre-code asamasinda)
+- **Su anki durum:** Kod yok, mimari karar verilmemis, belgeler eksik — saf fikir asamasi
 - **En guclu alan:** Competitive Analysis (2/10) — benzersiz "AI debate chain" konsepti, dogrudan rakip yok, first-mover firsati mevcut
 - **En zayif alan:** UI/UX, Content, Accessibility, SEO, Growth, Analytics (hepsi 1/10) — sifirdan insa edilmesi gereken alanlar
 - **Acil aksiyon sayisi: 20** (asagida onceliklendirilmis)
 - **Kritik risk:** OpenRouter API key'in frontend'e sizmasi, zincirli prompt injection, Firebase default rules — bunlar MVP oncesi cozulmezse lansman yapilamaz
 
-**Tek cumle ozet:** RefinUp'in fikri benzersiz ve pazar bos, ancak 3-6 aylik first-mover penceresi dar; backend proxy (BFF), event taxonomy ve design system Sprint 0'da kurulmazsa teknik borc birikiyor ve rakipler yakalayabilir.
+**Tek cumle ozet:** RefinUp'in fikri benzersiz ve pazar bos; **3-6 aylik first-mover penceresi kapanmadan** backend proxy (BFF), event taxonomy ve design system Sprint 0'da kurulmazsa teknik borc birikir ve Poe/Perplexity gibi rakipler yakalayabilir.
 
 ---
 
@@ -22,14 +23,14 @@
 | 1 | UI/UX Design | A9 ArtLead | B3 Frontend Coder + D1 UI/UX Researcher | Sonnet | 1/10 | Design system, step indicator, streaming state sifir | Diff view (tur karsilastirma) en riskli UX karari |
 | 2 | Performance | A10 CodeLead | B12 Performance Optimizer | Sonnet | N/A (4-8) | SSE streaming + Flutter WASM kritik | AI response cache + isolate kullanimi |
 | 3 | SEO | A11 GrowthLead | H5 SEO Agent | Haiku | 1/10 | Domain, sitemap, structured data sifir | GEO (LLM citation) ilk gunden oncelik |
+| 4 | Architecture & Code | A10 CodeLead | B1 Backend Architect + B8 Refactor | Opus | N/A (3-9) | Platform/backend karari verilmemis | Flutter + Supabase + server-side proxy |
 | 5 | Monetization | A12 BizLead | H3 Revenue Analyst + H4 Pricing Strategist | Sonnet | 2/10 | Freemium limitleri ve maliyet hesabi yok | Reverse trial 2-3x konversiyon potansiyeli |
 | 6 | Growth & Engagement | A11 GrowthLead | H7 Social Media + H9 Newsletter | Sonnet | 1/10 | Viral loop mekanizmasi yok | Shareable output URL en buyuk growth lever |
 | 7 | Security & Infra | A13 SecLead | B13 Security Auditor + C2 Scanner | Opus | 3/10 | API key ifsa, prompt injection, Firebase rules | Backend proxy (BFF) zorunlu |
 | 8 | Content Strategy | A9 ArtLead | H8 Content Repurposer | Haiku | 1/10 | Marka sesi, microcopy kilavuzu yok | AI cikti cerceveleme dili olmadan gelistirme baslanamaz |
 | 9 | Analytics & Tracking | A11 GrowthLead | M3 A/B Test + M4 Analytics Agent | Sonnet | 1/10 | Event taxonomy tanimlanmamis | "Aha moment" = ilk basarili refinement |
-| 10 | Architecture & Code | A10 CodeLead | B1 Backend Architect + B8 Refactor | Opus | N/A (3-9) | Platform/backend karari verilmemis | Flutter + Supabase + server-side proxy |
-| 11 | Accessibility | A9 ArtLead | D8 Mockup Reviewer | Haiku | 1/10 | WCAG hedefi belirlenmemis | Semantics API kullanimi zorunlu |
-| 12 | Competitive Analysis | A12 BizLead | H2 Competitor + K1 Researcher + K4 Trend | Sonnet | 2/10 | Dogrudan rakip yok ama pencere dar (3-6 ay) | "Echo chamber" karsiti konumlandirma |
+| 10 | Accessibility | A9 ArtLead | D8 Mockup Reviewer | Haiku | 1/10 | WCAG hedefi belirlenmemis | Semantics API kullanimi zorunlu |
+| 11 | Competitive Analysis | A12 BizLead | H2 Competitor + K1 Researcher + K4 Trend | Sonnet | 2/10 | Dogrudan rakip yok ama pencere dar (3-6 ay) | "Echo chamber" karsiti konumlandirma |
 
 ---
 
@@ -160,7 +161,7 @@ RefinUp'in temel ozelligi (AI-1 → AI-2 → AI-3 zinciri) ayni zamanda en buyuk
 
 ## Sprint Onerisi
 
-### Sprint 0 — Temel Kararlar ve Belgeler (1 hafta)
+### Sprint 0 — Temel Kararlar ve Belgeler (Hafta 1 · 7 Apr–13 Apr)
 > Amac: Kod yazmadan once tum kritik kararlari al, belgeleri olustur.
 
 - [ ] Flutter + Supabase stack kararini confirm et
@@ -172,7 +173,7 @@ RefinUp'in temel ozelligi (AI-1 → AI-2 → AI-3 zinciri) ayni zamanda en buyuk
 - [ ] WCAG 2.1 AA hedefini ilan et
 - [ ] Domain al
 
-### Sprint 1 — Iskelet ve Guvenlik Temeli (2 hafta)
+### Sprint 1 — Iskelet ve Guvenlik Temeli (Hafta 2–3 · 14 Apr–27 Apr)
 > Amac: Calisir iskelet; guvenlik temeli; tek bir fikir submit edip AI yanit alabilme.
 
 - [ ] Flutter proje iskeleti (feature-first klasor yapisi + Riverpod)
@@ -186,7 +187,7 @@ RefinUp'in temel ozelligi (AI-1 → AI-2 → AI-3 zinciri) ayni zamanda en buyuk
 - [ ] PostHog / analytics entegrasyonu
 - [ ] Sentry error tracking
 
-### Sprint 2 — Core Feature + Growth Temeli (2 hafta)
+### Sprint 2 — Core Feature + Growth Temeli (Hafta 4–5 · 28 Apr–11 May)
 > Amac: Multi-tur AI zinciri, shareable URL, landing page.
 
 - [ ] Multi-tur sequential pipeline (2-4 tur)
@@ -199,7 +200,7 @@ RefinUp'in temel ozelligi (AI-1 → AI-2 → AI-3 zinciri) ayni zamanda en buyuk
 - [ ] Zincirli prompt injection onlemleri
 - [ ] Temel a11y: Semantics labels, klavye navigasyonu, kontrast
 
-### Sprint 3+ — Buyume ve Monetizasyon
+### Sprint 3+ — Buyume ve Monetizasyon (Hafta 6+ · 12 May itibaren)
 > Amac: Odeme, viral loop, launch.
 
 - [ ] Stripe entegrasyonu + reverse trial
@@ -213,6 +214,66 @@ RefinUp'in temel ozelligi (AI-1 → AI-2 → AI-3 zinciri) ayni zamanda en buyuk
 
 ---
 
+## Yol Haritasi
+
+### Genel Bakis
+
+```mermaid
+graph LR
+  S0["Sprint 0\nHafta 1 · 7–13 Apr\nBelge & Kararlar"]
+  S1["Sprint 1\nHafta 2–3 · 14–27 Apr\nIskelet & Guvenlik"]
+  S2["Sprint 2\nHafta 4–5 · 28 Apr–11 May\nCore Feature & Growth"]
+  S3["Sprint 3+\nHafta 6+ · 12 May~\nMonetizasyon & Launch"]
+
+  S0 --> S1 --> S2 --> S3
+```
+
+> Her faz bir sonrakinin onkosuldur. Sprint 0 belgeler olmadan Sprint 1 baslayamaz; BFF olmadan Sprint 2'nin core feature'i guvensizdir.
+
+### Faz Detaylari
+
+| Faz | Takvim | Sure | Hedef | Ana Ciktilar | Blokorler |
+|-----|--------|------|-------|-------------|-----------|
+| Sprint 0 | 7–13 Apr | 1 hafta | Temel kararlar & belgeler | Stack karari, BFF mimarisi, design tokens, event taxonomy, marka sesi, maliyet tablosu | Takim uyumsuzlugu; karar gecikmesi |
+| Sprint 1 | 14–27 Apr | 2 hafta | Calisir iskelet & guvenlik temeli | Auth, DB schema, backend proxy, rate limiting, ilk AI turu (streaming), analytics | Sprint 0 belgeleri eksikse baslatilamaz |
+| Sprint 2 | 28 Apr–11 May | 2 hafta | Core feature & buyume temeli | Multi-tur pipeline, shareable URL, landing page, onboarding, paywall | BFF olmadan core feature deploy edilemez |
+| Sprint 3+ | 12 May+ | Surekli | Monetizasyon & lansman | Stripe, reverse trial, Product Hunt, GEO, diff view | Shareable URL Sprint 2'de bitmezse viral loop gecikir |
+
+### Milestone Checklist
+
+**Sprint 0 Tamamlandi mi?**
+- [ ] Stack karari dokumante edildi (Flutter + Supabase)
+- [ ] BFF mimarisi cizildi ve onaylandi
+- [ ] Design token dosyasi olusturuldu
+- [ ] Event taxonomy belgesi yazildi
+- [ ] Marka sesi & microcopy kilavuzu yazildi
+- [ ] Freemium maliyet tablosu hazir
+- [ ] Domain alinip DNS ayarlari yapildi
+
+**Sprint 1 Tamamlandi mi?**
+- [ ] Flutter iskelet repo'ya push edildi
+- [ ] Supabase schema deploy edildi (users, sessions, rounds, user_quotas)
+- [ ] Backend proxy (Edge Function) calisir durumda
+- [ ] Firebase Security Rules + App Check aktif
+- [ ] Rate limiting + maliyet tavani test edildi
+- [ ] Ilk end-to-end AI turu demo edildi (streaming)
+- [ ] PostHog dashboard aktif
+
+**Sprint 2 Tamamlandi mi?**
+- [ ] Multi-tur pipeline (min 2 tur) calisir
+- [ ] Shareable URL olusturuluyor ve aciliyor
+- [ ] Landing page canli (meta + OG + sitemap)
+- [ ] Onboarding flow test edildi
+- [ ] Paywall gorunuyor (limit asildigi anda)
+
+**Sprint 3+ Lansmanı Hazir mi?**
+- [ ] Stripe odeme akisi test edildi
+- [ ] Reverse trial (14 gun) aktif
+- [ ] Product Hunt profili olusturuldu
+- [ ] Before & After paylasim akisi calisir
+
+---
+
 ## Methodology & Cost Report
 
 | # | Kategori | Lead | Worker Agent(ler) | Model | Tahmini Tool Call | Tahmini Token |
@@ -220,14 +281,14 @@ RefinUp'in temel ozelligi (AI-1 → AI-2 → AI-3 zinciri) ayni zamanda en buyuk
 | 1 | UI/UX Design | A9 ArtLead | B3 Frontend Coder + D1 UI/UX Researcher | Sonnet | ~15 | ~25K |
 | 2 | Performance | A10 CodeLead | B12 Performance Optimizer | Sonnet | ~12 | ~20K |
 | 3 | SEO | A11 GrowthLead | H5 SEO Agent | Haiku | ~10 | ~12K |
+| 4 | Architecture & Code | A10 CodeLead | B1 Backend Architect + B8 Refactor Agent | Opus | ~20 | ~40K |
 | 5 | Monetization | A12 BizLead | H3 Revenue Analyst + H4 Pricing Strategist | Sonnet | ~15 | ~25K |
 | 6 | Growth & Engagement | A11 GrowthLead | H7 Social Media + H9 Newsletter | Sonnet | ~15 | ~25K |
 | 7 | Security & Infra | A13 SecLead | B13 Security Auditor + C2 Security Scanner | Opus | ~20 | ~40K |
 | 8 | Content Strategy | A9 ArtLead | H8 Content Repurposer | Haiku | ~10 | ~12K |
 | 9 | Analytics & Tracking | A11 GrowthLead | M3 A/B Test + M4 Analytics Agent | Sonnet | ~15 | ~25K |
-| 10 | Architecture & Code | A10 CodeLead | B1 Backend Architect + B8 Refactor Agent | Opus | ~20 | ~40K |
-| 11 | Accessibility | A9 ArtLead | D8 Mockup Reviewer | Haiku | ~10 | ~12K |
-| 12 | Competitive Analysis | A12 BizLead | H2 Competitor + K1 Researcher + K4 Trend | Sonnet | ~18 | ~30K |
+| 10 | Accessibility | A9 ArtLead | D8 Mockup Reviewer | Haiku | ~10 | ~12K |
+| 11 | Competitive Analysis | A12 BizLead | H2 Competitor + K1 Researcher + K4 Trend | Sonnet | ~18 | ~30K |
 | — | **Master Analysis** | **A1 Master** | — | **Opus 4.6** | ~15 | ~50K |
 | | **TOPLAM** | | | | **~175** | **~316K** |
 
