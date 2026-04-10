@@ -1,0 +1,35 @@
+name: refinup
+repository: https://github.com/skywalker2506/refinup
+
+packages:
+  - packages/**
+
+scripts:
+  setup:
+    description: Setup Flutter and dependencies
+    run: |
+      melos clean
+      melos get
+      melos pub get
+
+  analyze:
+    run: melos exec -- flutter analyze
+    description: Analyze all packages
+
+  test:
+    run: melos test --fail-fast
+    description: Run all tests
+
+  build:web:
+    run: melos exec -- flutter build web --release
+    description: Build web app
+
+  pub:get:
+    run: melos get
+    description: Get dependencies for all packages
+
+  clean:
+    run: melos clean
+    description: Clean all packages
+
+sdkPath: null

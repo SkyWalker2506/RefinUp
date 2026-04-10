@@ -1,0 +1,14 @@
+name: refinup_ai_interface
+description: Abstract interface contracts for AI providers
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

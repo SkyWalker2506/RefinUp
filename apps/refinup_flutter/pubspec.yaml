@@ -1,0 +1,32 @@
+name: refinup_flutter
+description: RefinUp Flutter application
+
+publish_to: 'none'
+
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  refinup_core:
+    path: ../../packages/core/refinup_core
+  refinup_ai_interface:
+    path: ../../packages/ai/refinup_ai_interface
+  refinup_model_registry:
+    path: ../../packages/ai/refinup_model_registry
+  refinup_agent_catalog:
+    path: ../../packages/agents/refinup_agent_catalog
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - packages/refinup_model_registry/assets/
