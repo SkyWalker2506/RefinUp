@@ -1,0 +1,103 @@
+{
+  "models": [
+    {
+      "id": "claude-opus-4",
+      "provider": "anthropic",
+      "capabilities": ["lead", "debate", "synthesize", "code-review"],
+      "capabilityScore": 10,
+      "pricing": {
+        "inputMTok": 3,
+        "outputMTok": 15
+      },
+      "contextWindow": 200000,
+      "supportsStreaming": true
+    },
+    {
+      "id": "gpt-4o",
+      "provider": "openai",
+      "capabilities": ["lead", "debate", "vision"],
+      "capabilityScore": 9,
+      "pricing": {
+        "inputMTok": 2.5,
+        "outputMTok": 10
+      },
+      "contextWindow": 128000,
+      "supportsStreaming": true
+    },
+    {
+      "id": "claude-3.5-sonnet",
+      "provider": "anthropic",
+      "capabilities": ["lead", "debate", "code-review"],
+      "capabilityScore": 9,
+      "pricing": {
+        "inputMTok": 3,
+        "outputMTok": 15
+      },
+      "contextWindow": 200000,
+      "supportsStreaming": true
+    },
+    {
+      "id": "claude-3.5-haiku",
+      "provider": "anthropic",
+      "capabilities": ["debate", "fast", "code-review"],
+      "capabilityScore": 6,
+      "pricing": {
+        "inputMTok": 0.8,
+        "outputMTok": 4
+      },
+      "contextWindow": 200000,
+      "supportsStreaming": true
+    },
+    {
+      "id": "gemini-2.0-flash",
+      "provider": "google",
+      "capabilities": ["lead", "debate", "vision", "summarize"],
+      "capabilityScore": 8,
+      "pricing": {
+        "inputMTok": 0,
+        "outputMTok": 0
+      },
+      "contextWindow": 1000000,
+      "supportsStreaming": true
+    },
+    {
+      "id": "mistral-7b",
+      "provider": "ollama",
+      "capabilities": ["debate", "fast"],
+      "capabilityScore": 5,
+      "pricing": {
+        "inputMTok": 0,
+        "outputMTok": 0
+      },
+      "contextWindow": 32000,
+      "supportsStreaming": true,
+      "endpoint": "http://localhost:11434"
+    }
+  ],
+  "domains": [
+    {
+      "id": "design",
+      "name": "UI/UX, Visual, Brand",
+      "preferredModels": ["gemini-2.0-flash", "gpt-4o"],
+      "leaderElection": "best_vision_capability"
+    },
+    {
+      "id": "code",
+      "name": "Backend, API, Security",
+      "preferredModels": ["claude-opus-4", "gpt-4o"],
+      "leaderElection": "best_code_quality"
+    },
+    {
+      "id": "research",
+      "name": "Market, Trends, Data",
+      "preferredModels": ["gpt-4o", "gemini-2.0-flash"],
+      "leaderElection": "best_breadth"
+    },
+    {
+      "id": "strategy",
+      "name": "Orchestration, Planning",
+      "preferredModels": ["claude-opus-4", "claude-3.5-sonnet"],
+      "leaderElection": "by_consensus"
+    }
+  ]
+}
