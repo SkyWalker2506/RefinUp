@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:refinup_model_registry/refinup_model_registry.dart';
+import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
-import 'features/refinement/screens/idea_input_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,7 +11,12 @@ void main() async {
   final registry = ModelRegistry();
   await registry.initialize();
 
-  runApp(const RefinUpApp());
+  runApp(
+    // ProviderScope is required for Riverpod
+    const ProviderScope(
+      child: RefinUpApp(),
+    ),
+  );
 }
 
 class RefinUpApp extends StatelessWidget {
@@ -18,13 +24,13 @@ class RefinUpApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'RefinUp',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
-      home: const IdeaInputScreen(),
+      routerConfig: appRouter,
     );
   }
 }

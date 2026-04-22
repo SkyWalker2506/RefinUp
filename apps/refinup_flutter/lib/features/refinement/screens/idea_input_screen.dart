@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/router/app_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../core/utils/app_events.dart';
 import '../../../shared/widgets/step_indicator.dart';
+import '../providers/refinement_provider.dart';
 
 /// First screen: user inputs their raw idea.
 /// WCAG 2.1 AA: form fields have semantic labels, character count announced.
-class IdeaInputScreen extends StatefulWidget {
+class IdeaInputScreen extends ConsumerStatefulWidget {
   const IdeaInputScreen({super.key});
 
   @override
-  State<IdeaInputScreen> createState() => _IdeaInputScreenState();
+  ConsumerState<IdeaInputScreen> createState() => _IdeaInputScreenState();
 }
 
-class _IdeaInputScreenState extends State<IdeaInputScreen> {
+class _IdeaInputScreenState extends ConsumerState<IdeaInputScreen> {
   final _controller = TextEditingController();
   final _focusNode = FocusNode();
   static const int _maxLength = 5000;
@@ -34,15 +39,12 @@ class _IdeaInputScreenState extends State<IdeaInputScreen> {
     super.dispose();
   }
 
-  void _onSubmit() {
+  Future<void> _onSubmit() async {
     if (!_canSubmit) return;
-    // TODO(sprint1): navigate to refinement screen with idea text
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Idea submitted: ${_controller.text.substring(0, 40)}...'),
-        backgroundColor: AppColors.secondary,
-      ),
-    );
+    final ideaText = _controller.text;
+
+    // Navigate to refinement screen — provider will handle validation + run
+    context.go(AppRoutes.refinement, extra: ideaText);
   }
 
   @override
