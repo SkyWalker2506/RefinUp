@@ -48,6 +48,17 @@ class RefinementState {
   bool get isRunning => status == RefinementStatus.running;
   bool get isComplete => status == RefinementStatus.complete;
   bool get hasError => status == RefinementStatus.error;
+
+  /// Role of the round that is currently being processed, or `null` if no
+  /// rounds are loaded or [currentRound] is out of range.
+  ///
+  /// Cleaner than indexing externally and avoids off-by-one bugs in
+  /// callers when the rounds list is empty (e.g. during validation).
+  String? get currentRoundRole {
+    if (rounds.isEmpty) return null;
+    if (currentRound < 0 || currentRound >= rounds.length) return null;
+    return rounds[currentRound].role;
+  }
 }
 
 class RoundState {
