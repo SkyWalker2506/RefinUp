@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/refinement/screens/idea_input_screen.dart';
 import '../../features/refinement/screens/refinement_flow_screen.dart';
+import 'refinement_params.dart';
+
+export 'refinement_params.dart';
 
 /// Named route paths
 class AppRoutes {
@@ -24,8 +27,9 @@ final appRouter = GoRouter(
       path: AppRoutes.refinement,
       name: 'refinement',
       builder: (context, state) {
-        final ideaText = state.extra as String? ?? '';
-        return RefinementFlowScreen(ideaText: ideaText);
+        // Accepts either a typed RefinementParams or a legacy raw String.
+        final params = RefinementParams.fromExtra(state.extra);
+        return RefinementFlowScreen(ideaText: params.ideaText);
       },
     ),
   ],
