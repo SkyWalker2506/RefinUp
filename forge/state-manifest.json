@@ -1,0 +1,14 @@
+{
+  "run": 4,
+  "total_runs": 4,
+  "project": "RefinUp",
+  "focus": ["-test", "-refactor"],
+  "current_phase": 4,
+  "current_sprint": 4,
+  "current_wave": 1,
+  "completed_tasks": [],
+  "failed_tasks": [],
+  "in_progress_tasks": [],
+  "started_at": "2026-04-26T10:00:00Z",
+  "last_checkpoint": "2026-04-26T10:00:00Z"
+}
