@@ -43,3 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Forge runtime state (lock files only — forge/ artifacts are committed)
+.jira-state/
