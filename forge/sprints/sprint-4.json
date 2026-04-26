@@ -3,95 +3,68 @@
   "epic": "Testing & State Hardening",
   "focus": ["-test", "-refactor"],
   "started_at": "2026-04-26T10:00:00Z",
-  "completed_at": null,
+  "completed_at": "2026-04-26T11:30:00Z",
   "tasks": [
     {
       "id": "T-009",
       "title": "Add unit tests for InputSanitizer",
-      "description": "Cover sanitize() happy path, HTML strip, length min/max, all 7 injection patterns, and truncate() helper. Target 100% line coverage of input_sanitizer.dart.",
       "priority": "P0",
       "sp": 3,
       "wave": 1,
       "depends_on": [],
-      "files": [
-        "apps/refinup_flutter/test/core/utils/input_sanitizer_test.dart"
-      ],
-      "verify": "cd apps/refinup_flutter && flutter test test/core/utils/input_sanitizer_test.dart",
-      "status": "todo",
-      "branch": null,
-      "pr": null,
-      "completed_at": null
+      "status": "done",
+      "branch": "feat/t-009-input-sanitizer-tests",
+      "pr": "https://github.com/SkyWalker2506/RefinUp/pull/10",
+      "completed_at": "2026-04-26T10:25:00Z"
     },
     {
       "id": "T-010",
       "title": "Add re-mount guard to RefinementFlowScreen",
-      "description": "Prevent startRefinement from firing twice on hot reload. Add private _started flag in state. Also reset provider before starting if status != idle to handle navigation back-then-forward cleanly.",
       "priority": "P0",
       "sp": 2,
       "wave": 1,
       "depends_on": [],
-      "files": [
-        "apps/refinup_flutter/lib/features/refinement/screens/refinement_flow_screen.dart"
-      ],
-      "verify": "cd apps/refinup_flutter && flutter analyze lib/features/refinement/screens/refinement_flow_screen.dart",
-      "status": "todo",
-      "branch": null,
-      "pr": null,
-      "completed_at": null
+      "status": "done",
+      "branch": "feat/t-010-remount-guard",
+      "pr": "https://github.com/SkyWalker2506/RefinUp/pull/11",
+      "completed_at": "2026-04-26T10:40:00Z"
     },
     {
       "id": "T-011",
-      "title": "Typed router extra params",
-      "description": "Replace 'state.extra as String?' with a typed RefinementParams data class. Update IdeaInputScreen call site to pass RefinementParams(ideaText: ...) and AppRouter to read state.extra as RefinementParams. Backward-compatible fallback for raw String.",
+      "title": "Typed router extra params + StepState clash fix",
       "priority": "P1",
       "sp": 2,
       "wave": 1,
       "depends_on": [],
-      "files": [
-        "apps/refinup_flutter/lib/core/router/app_router.dart",
-        "apps/refinup_flutter/lib/core/router/refinement_params.dart",
-        "apps/refinup_flutter/lib/features/refinement/screens/idea_input_screen.dart"
-      ],
-      "verify": "cd apps/refinup_flutter && flutter analyze lib/core/router lib/features/refinement/screens/idea_input_screen.dart",
-      "status": "todo",
-      "branch": null,
-      "pr": null,
-      "completed_at": null
+      "status": "done",
+      "branch": "feat/t-011-typed-router-params",
+      "pr": "https://github.com/SkyWalker2506/RefinUp/pull/12",
+      "completed_at": "2026-04-26T10:55:00Z",
+      "notes": "Surfaced latent StepState ambiguous-import bug; fixed in scope by renaming to RefinementStepState."
     },
     {
       "id": "T-012",
       "title": "Widget test for StepIndicator transitions",
-      "description": "Create widget test that pumps StepIndicator with 3 steps, verifies each step renders correct state (pending, current, complete), then pumps with currentStep changes and verifies state transitions render correctly.",
       "priority": "P1",
       "sp": 3,
       "wave": 2,
       "depends_on": ["T-009"],
-      "files": [
-        "apps/refinup_flutter/test/shared/widgets/step_indicator_test.dart"
-      ],
-      "verify": "cd apps/refinup_flutter && flutter test test/shared/widgets/step_indicator_test.dart",
-      "status": "todo",
-      "branch": null,
-      "pr": null,
-      "completed_at": null
+      "status": "done",
+      "branch": "feat/t-012-step-indicator-test",
+      "pr": "https://github.com/SkyWalker2506/RefinUp/pull/13",
+      "completed_at": "2026-04-26T11:15:00Z"
     },
     {
       "id": "T-013",
       "title": "Add currentRoundRole getter + tests to RefinementState",
-      "description": "Add a derived getter currentRoundRole returning the role of the current active round (null if no rounds). Cleaner than indexing externally. Add unit tests covering empty, idle, running, complete states.",
       "priority": "P1",
       "sp": 2,
       "wave": 2,
       "depends_on": ["T-010"],
-      "files": [
-        "apps/refinup_flutter/lib/features/refinement/providers/refinement_provider.dart",
-        "apps/refinup_flutter/test/features/refinement/refinement_provider_test.dart"
-      ],
-      "verify": "cd apps/refinup_flutter && flutter test test/features/refinement/refinement_provider_test.dart",
-      "status": "todo",
-      "branch": null,
-      "pr": null,
-      "completed_at": null
+      "status": "done",
+      "branch": "feat/t-013-current-round-role",
+      "pr": "https://github.com/SkyWalker2506/RefinUp/pull/14",
+      "completed_at": "2026-04-26T11:30:00Z"
     }
   ]
 }
