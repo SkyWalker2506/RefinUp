@@ -43,8 +43,11 @@ class _IdeaInputScreenState extends ConsumerState<IdeaInputScreen> {
     if (!_canSubmit) return;
     final ideaText = _controller.text;
 
-    // Navigate to refinement screen — provider will handle validation + run
-    context.go(AppRoutes.refinement, extra: ideaText);
+    // Navigate to refinement screen with a typed extra payload.
+    context.go(
+      AppRoutes.refinement,
+      extra: RefinementParams(ideaText: ideaText),
+    );
   }
 
   @override
@@ -81,9 +84,9 @@ class _IdeaInputScreenState extends ConsumerState<IdeaInputScreen> {
               // Step indicator — 3 steps: Input → Refine → Result
               StepIndicator(
                 steps: const [
-                  StepInfo(label: 'Your Idea', state: StepState.active),
-                  StepInfo(label: 'AI Rounds', state: StepState.pending, roleTag: 'Multi-AI'),
-                  StepInfo(label: 'Result', state: StepState.pending),
+                  StepInfo(label: 'Your Idea', state: RefinementStepState.active),
+                  StepInfo(label: 'AI Rounds', state: RefinementStepState.pending, roleTag: 'Multi-AI'),
+                  StepInfo(label: 'Result', state: RefinementStepState.pending),
                 ],
                 currentStep: 0,
               ),

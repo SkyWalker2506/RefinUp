@@ -4,17 +4,17 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_text_styles.dart';
 
-enum StepState { pending, active, completed }
+enum RefinementStepState { pending, active, completed }
 
 class StepInfo {
   final String label;
   final String? roleTag;
-  final StepState state;
+  final RefinementStepState state;
 
   const StepInfo({
     required this.label,
     this.roleTag,
-    this.state = StepState.pending,
+    this.state = RefinementStepState.pending,
   });
 }
 
@@ -85,12 +85,12 @@ class _StepDot extends StatelessWidget {
     Widget child;
 
     switch (info.state) {
-      case StepState.completed:
+      case RefinementStepState.completed:
         bgColor = AppColors.primary;
         borderColor = AppColors.primary;
         child = const Icon(Icons.check, size: 14, color: Colors.white);
         break;
-      case StepState.active:
+      case RefinementStepState.active:
         bgColor = Colors.white;
         borderColor = roleColor;
         child = Text(
@@ -101,7 +101,7 @@ class _StepDot extends StatelessWidget {
           ),
         );
         break;
-      case StepState.pending:
+      case RefinementStepState.pending:
         bgColor = Colors.white;
         borderColor = AppColors.outline;
         child = Text(

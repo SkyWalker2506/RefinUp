@@ -45,15 +45,15 @@ class RefinementScreen extends StatelessWidget {
 
     // Build step list from rounds
     final steps = [
-      const StepInfo(label: 'Your Idea', state: StepState.completed),
+      const StepInfo(label: 'Your Idea', state: RefinementStepState.completed),
       ...rounds.asMap().entries.map((e) {
-        final StepState state;
+        final RefinementStepState state;
         if (e.key < currentRoundIndex) {
-          state = StepState.completed;
+          state = RefinementStepState.completed;
         } else if (e.key == currentRoundIndex) {
-          state = StepState.active;
+          state = RefinementStepState.active;
         } else {
-          state = StepState.pending;
+          state = RefinementStepState.pending;
         }
         return StepInfo(
           label: 'Round ${e.key + 1}',
@@ -63,7 +63,7 @@ class RefinementScreen extends StatelessWidget {
       }),
       StepInfo(
         label: 'Result',
-        state: isComplete ? StepState.completed : StepState.pending,
+        state: isComplete ? RefinementStepState.completed : RefinementStepState.pending,
       ),
     ];
 
