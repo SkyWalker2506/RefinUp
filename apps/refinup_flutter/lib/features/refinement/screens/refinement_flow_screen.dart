@@ -18,12 +18,28 @@ class RefinementFlowScreen extends ConsumerStatefulWidget {
 }
 
 class _RefinementFlowScreenState extends ConsumerState<RefinementFlowScreen> {
+  /// Re-mount guard: ensures startRefinement is only triggered once per
+  /// screen lifecycle. Without this flag, hot reload or a quick re-mount
+  /// (e.g. nav-back-then-forward) could fire the pipeline twice and
+  /// corrupt state.
+  bool _started = false;
+
   @override
   void initState() {
     super.initState();
-    // Start the refinement pipeline on mount
+    // Start the refinement pipeline on mount — once and only once.
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(refinementProvider.notifier).startRefinement(widget.ideaText);
+      if (_started || !mounted) return;
+      _started = true;
+
+      final notifier = ref.read(refinementProvider.notifier);
+      // If a previous session is still hanging around (nav-back-forward)
+      // reset before starting a fresh one.
+      final status = ref.read(refinementProvider).status;
+      if (status != RefinementStatus.idle) {
+        notifier.reset();
+      }
+      notifier.startRefinement(widget.ideaText);
     });
   }
 
